@@ -1,20 +1,12 @@
- <html> 
- 
- <head>
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<title>Blog de Suyapa</title>
- </head>
-	<div>
-	<h1><a href="">Django Girls Blog</a></h1>
-	</div>
-	
+
+{% extends 'blog/base.html' %}
+
+{% block content %}
 	{% for post in posts %}
-	<div>
+	<div class='post'>
 		<p>publicado: {{ post.published_date }}</p>
-		<h1><a href="">{{ post.title }}</a></h1>
+		<h1><a href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
 		<p>{{ post.text|linebreaks }}</p>
 	</div>
 	{% endfor %}
-	
- </html>
+{% endblock content %}
